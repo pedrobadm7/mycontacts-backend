@@ -1,0 +1,22 @@
+Data Source: Fonte de Dados (Array na memória (No caso do módulo passado era nosso mock de users)).
+
+Toda manipulação desse Data Source era feito dentro do controller, por exemplo, para ordenar uma lista a gente usava o Data Source com algum método dentro do controller.
+
+E qual o problema de fazer isso dentro do controller? O controller deveria conhecer apenas a regra de negócio da aplicação e não as regras de implementação/métodos.
+
+Até porque se você trocar o array para outra fonte de dados você teria que refatorar basicamente todo o código do controller, e o problema nisso é que todo código sensível (regra de negócio) está nele.
+
+Aí que entra o Repository Pattern, ele diz que precisamos ter uma layer (que é uma camada de abstração) de acesso ao Data Source, ao invés do Controller ter acesso e conhecer diretamente o Data Source, ou seja, ao invés do controller saber que para inserir um novo usuário ele precisa executar um método, o controller conhece o Repository, e o Repository sabe que para inserir um item em um array ele precisa executar um método.
+
+
+------------------------------ Como funciona o lifecycle de uma requisição? ----------------------------------------------------------------------------------
+Toda vez que uma request chega, ela precisa ser resolvida. E para resolver-la chamamos um controller que contém a regra de negócio para resolver a request e no fim de tudo finalizamos a requisição respondendo alguma coisa (Request -> Controller -> Response).
+
+E onde os middlewares entram na história? Eles mudam um pouco esse comportamento, antes da request chegar no controller, ela é interceptada por nossos middlewares (plural pois é possível ter vários). Então a request passa chega e passa pelos middlewares para só então chegar no controller (Request -> Middlewares -> Controller -> Response)
+
+E para que serve um middlewares? Bom, servem para duas coisas:
+
+  1°) Manipular os objetos de REQUEST e RESPONSE (injetar propriedades, deletar, editar etc... De forma que fique disponível em todos os controllers da aplicação). Ou, então, ter um controle minuscioso, por exemplo: Eu quero que um middleware execute apenas para um grupo de rotas ou rota específica.
+
+  2°) Servem para controlar o lifecycle, como assim? Dentro de um middleware eu posso dizer se a request deve continuar passando (ir para controller, executar a regra de negócio e responder) ou se a request deve parar no próprio middleware (Reques <-> Middlewares -> Controller -> Response). Ou seja, o middleware consege responder a requisição antes mesmo de chamar o controller. UM exemplo disso é um middleware para autenticação, então ao invés de fazer a validação de um token JWT dentro de um controller que vai resolver as rotas que serão autenticadas, criamos um middleware e verificamos isso lá mesmo.
+
