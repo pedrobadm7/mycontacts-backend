@@ -25,3 +25,15 @@ Por que usar Docker?
 1°) Aplicações rodam de forma isolada (não interferem uma na outra);
 2°) Usa o mesmo Kernel da máquina base, tornando-se mais leve e eficiente quando comparado às VMs tradicionais;
 3°) Portabilidade (Conseguir compartilhar através dos containers o ambiente com as exatas aplicações onde a aplicação precisa executar).
+
+---------------------------------------- COMANDOS DE SQL/CONTAINER ------------------------------------------------------------------------------------------
+
+docker ps = verificar se o container está rodando
+docker sart <nome do container> = Inicia container
+docker exec -it <nome do container> bash = Acessa container de forma interativa
+psql -U <nome do usuário, no nosso caso 'root'> = Logar no postgres
+
+\l = Listar bases de dados
+\dt = Listar todas as tabelas
+
+node src/database/index.js = Verifica se foi feita a conexão do node com o postgres
