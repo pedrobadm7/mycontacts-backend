@@ -1,5 +1,8 @@
 const CategoriesRepository = require('../repositories/CategoriesRepository');
 
+// Error Handler (Middleware express) -> Manipulador de Erros
+require('express-async-errors');
+
 class CategoryController {
   async index(request, response) {
     const categories = await CategoriesRepository.findAll();
