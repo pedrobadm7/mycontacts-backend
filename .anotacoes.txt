@@ -20,3 +20,8 @@ E para que serve um middlewares? Bom, servem para duas coisas:
 
   2°) Servem para controlar o lifecycle, como assim? Dentro de um middleware eu posso dizer se a request deve continuar passando (ir para controller, executar a regra de negócio e responder) ou se a request deve parar no próprio middleware (Reques <-> Middlewares -> Controller -> Response). Ou seja, o middleware consege responder a requisição antes mesmo de chamar o controller. UM exemplo disso é um middleware para autenticação, então ao invés de fazer a validação de um token JWT dentro de um controller que vai resolver as rotas que serão autenticadas, criamos um middleware e verificamos isso lá mesmo.
 
+Por que usar Docker?
+
+1°) Aplicações rodam de forma isolada (não interferem uma na outra);
+2°) Usa o mesmo Kernel da máquina base, tornando-se mais leve e eficiente quando comparado às VMs tradicionais;
+3°) Portabilidade (Conseguir compartilhar através dos containers o ambiente com as exatas aplicações onde a aplicação precisa executar).
