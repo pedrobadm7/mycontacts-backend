@@ -29,7 +29,7 @@ Por que usar Docker?
 ---------------------------------------- COMANDOS DE SQL/CONTAINER ------------------------------------------------------------------------------------------
 
 docker ps = verificar se o container está rodando
-docker sart <nome do container> = Inicia container
+docker start <nome do container> = Inicia container
 docker exec -it <nome do container> bash = Acessa container de forma interativa
 psql -U <nome do usuário, no nosso caso 'root'> = Logar no postgres
 
