@@ -13,5 +13,6 @@ module.exports = {
     'consistent-return': 'off',
     camelcase: 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
+    'max-len': 'off',
   },
 };
