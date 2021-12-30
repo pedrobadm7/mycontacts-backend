@@ -35,5 +35,7 @@ psql -U <nome do usuário, no nosso caso 'root'> = Logar no postgres
 
 \l = Listar bases de dados
 \dt = Listar todas as tabelas
+\c <nome do database> = Conectar a um banco de dados
+
 
 node src/database/index.js = Verifica se foi feita a conexão do node com o postgres
