@@ -21,7 +21,7 @@ class ContactController {
       return response.status(404).json({ error: 'User not found' });
     }
 
-    return response.json(contact);
+    response.json(contact);
   }
 
   async store(request, response) {
@@ -43,8 +43,7 @@ class ContactController {
     const contact = await ContactsRepository.create({
       name, email, phone, category_id,
     });
-
-    return response.json(contact);
+    response.json(contact);
   }
 
   async update(request, response) {
